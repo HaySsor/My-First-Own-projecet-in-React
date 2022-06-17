@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import NoteInput from "./components/NoteInput";
+import ListOfNote from "./components/ListOfNote";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [allNotes, setAllNotes] = useState([
+		{
+			id: 1,
+			key: 1,
+			text: "Tu będą twoje Notakti",
+		},
+	]);
+
+	const UserNoteHandeler = thatNote => {
+		setAllNotes(prevNotes => {
+			const updateNote = [...prevNotes];
+			updateNote.unshift({
+				text: thatNote,
+				id: Math.random(),
+			});
+			return updateNote;
+		});
+	};
+	const deleteNote = gettedId => {
+		setAllNotes(prevNotes => {
+			const updatedGoals = prevNotes.filter(idNote => idNote.id !== gettedId);
+			return updatedGoals;
+		});
+	};
+
+	return (
+		<div>
+			<NoteInput onnNoteTake={UserNoteHandeler} />
+			<ListOfNote onNote={allNotes} onDelate={deleteNote} />
+		</div>
+	);
 }
 
 export default App;
