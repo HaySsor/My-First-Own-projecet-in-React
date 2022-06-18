@@ -1,4 +1,5 @@
 import React from "react";
+import styled from './ListItem.module.css'
 
 
 const ListItem = (props)=>{
@@ -8,7 +9,7 @@ const ListItem = (props)=>{
     }
 
     return(
-        <div className="item" onClick={Delete} >{props.getText}</div>
+        <div className={styled.text} onClick={Delete} >{props.getText}</div>
     )
 }
 

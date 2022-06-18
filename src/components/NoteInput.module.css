@@ -1,0 +1,114 @@
+.form {
+	padding: 3rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	height: 120px;
+	border-radius: 15px;
+	box-shadow: 0px 0px 10px #ccc;
+}
+
+.form label {
+	color: #fff;
+	font-size: 2rem;
+	display: block;
+	margin-bottom: 1rem;
+}
+.form input {
+	display: block;
+	width: 100%;
+	padding: 0.5rem 0;
+	border-radius: 15px;
+	background-color: transparent;
+	margin-bottom: 1rem;
+	color: #fff;
+	font-size: 1.3rem;
+	text-align: center;
+}
+.form input:focus{
+	outline: none;
+}
+.form.error label{
+	color: tomato;
+}
+.form.error input{
+	border-color: tomato;
+	animation: shake 1s;
+}
+
+.button {
+	padding: 0.5rem 1rem;
+	background-color: transparent;
+	border-radius: 15px;
+	border: 1px solid #ccc;
+	color: #fff;
+	position: relative;
+}
+.button::before {
+	content: "";
+	position: absolute;
+	width: 50%;
+	height: 70%;
+	z-index: -1;
+
+	top: -20%;
+	left: -10%;
+	border-top: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-radius: 5px;
+	transition: transform 0.3s, border 0.3s 0.2s;
+}
+.button::after {
+    content: "";
+	position: absolute;
+	width: 50%;
+	height: 70%;
+	z-index: -1;
+    
+	bottom: -20%;
+	right: -10%;
+	border-bottom: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-radius: 5px;
+    transition: transform 0.3s, border 0.3s 0.2s;
+}
+.button:hover {
+	background-color: #ccc;
+	color: black;
+}
+
+.button:hover.button::before {
+	border-top: none;
+	border-left: none;
+
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+
+	transform: translateX(130%);
+}
+.button:hover.button::after {
+	border-bottom: none;
+	border-right: none;
+
+	border-bottom: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+
+	transform: translateX(-130%);
+}
+
+
+@keyframes shake{
+	0%{
+		transform: rotate(0);
+	}
+	40%{
+		transform: rotate(5deg);
+	}
+	80%{
+		transform: rotate(-5deg);
+	}
+	100%{
+		transform: rotate(0);
+	}
+}
